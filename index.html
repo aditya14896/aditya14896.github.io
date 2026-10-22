@@ -1,1 +1,516 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aditya Singh — AI/ML Specialist Solutions Architect, AWS</title>
+  <meta name="description" content="Aditya Singh builds auditable, production agentic AI for high-stakes decisions in the public sector and education." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0f1f3d;
+      --navy-mid: #1a3260;
+      --accent: #e8793a;
+      --text: #1a1a2e;
+      --muted: #5a6070;
+      --border: #dde2ea;
+      --bg: #f8f9fb;
+      --white: #ffffff;
+      --radius: 10px;
+      --max: 860px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 16px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--navy);
+      padding: 0 24px;
+    }
+    nav ul {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      list-style: none;
+      gap: 4px;
+    }
+    nav a {
+      display: block;
+      padding: 14px 14px;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    nav a:hover { color: var(--white); }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      color: var(--white);
+      padding: 72px 24px 64px;
+    }
+    .hero-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      gap: 48px;
+      align-items: center;
+    }
+    .hero-photo {
+      flex-shrink: 0;
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid rgba(255,255,255,0.25);
+    }
+    .hero-text h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+    .hero-text .title {
+      margin-top: 6px;
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.8);
+      font-weight: 400;
+    }
+    .hero-text .bio {
+      margin-top: 18px;
+      font-size: 0.97rem;
+      color: rgba(255,255,255,0.85);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+    .hero-links {
+      margin-top: 24px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      padding: 9px 20px;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn-primary { background: var(--accent); color: var(--white); }
+    .btn-ghost { border: 1.5px solid rgba(255,255,255,0.45); color: var(--white); }
+
+    /* ── SECTIONS ── */
+    section { padding: 64px 24px; }
+    section:nth-child(even) { background: var(--white); }
+
+    .section-inner { max-width: var(--max); margin: 0 auto; }
+
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: -0.01em;
+      margin-bottom: 32px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--border);
+    }
+    h2 span { color: var(--accent); }
+
+    /* ── CARDS ── */
+    .cards { display: grid; gap: 18px; }
+    .cards-2 { grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); }
+
+    .card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+    }
+    section:nth-child(even) .card { background: var(--bg); }
+
+    .card-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .card h3 {
+      font-size: 0.97rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+    .card h3 a { color: inherit; text-decoration: none; }
+    .card h3 a:hover { text-decoration: underline; }
+    .card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .card .meta {
+      margin-top: 10px;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .card .meta a { color: var(--accent); text-decoration: none; }
+    .card .meta a:hover { text-decoration: underline; }
+
+    /* ── SPEAKING ── */
+    .speaking-group { margin-bottom: 36px; }
+    .speaking-group:last-child { margin-bottom: 0; }
+    .speaking-year {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .talk-list { list-style: none; display: grid; gap: 10px; }
+    .talk-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 12px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    section:nth-child(even) .talk-item { background: var(--white); }
+    .talk-item .talk-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .talk-item .talk-title a { color: inherit; text-decoration: none; }
+    .talk-item .talk-title a:hover { text-decoration: underline; }
+    .talk-item .talk-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .upcoming-badge {
+      display: inline-block;
+      background: #fff3e0;
+      color: #e65100;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      padding: 2px 7px;
+      border-radius: 4px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 0.82rem;
+    }
+    footer a { color: rgba(255,255,255,0.75); text-decoration: none; }
+    footer a:hover { color: var(--white); }
+
+    @media (max-width: 600px) {
+      .hero-inner { flex-direction: column; text-align: center; gap: 24px; }
+      .hero-links { justify-content: center; }
+      .hero-text .bio { margin: 18px auto 0; }
+      .cards-2 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#speaking">Speaking</a></li>
+    <li><a href="#reviewing">Reviewing</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="about">
+  <div class="hero-inner">
+    <img src="photo.jpg" alt="Aditya Singh" class="hero-photo" />
+    <div class="hero-text">
+      <h1>Aditya Singh</h1>
+      <div class="title">AI/ML Specialist Solutions Architect &mdash; Amazon Web Services</div>
+      <p class="bio">
+        I build auditable, production agentic AI for high-stakes decisions in the public sector and education.
+        My focus is the hard part of applied GenAI: not the demo, but making agentic systems trustworthy,
+        explainable, and safe to ship in regulated environments &mdash; education, government, healthcare &mdash;
+        where every decision needs a reason and an audit trail.
+      </p>
+      <div class="hero-links">
+        <a href="https://www.linkedin.com/in/adityalyfe/" class="btn btn-primary" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/aditya14896" class="btn btn-ghost" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://aws.amazon.com/blogs/machine-learning/author/adilyfe/" class="btn btn-ghost" target="_blank" rel="noopener">AWS Blog</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="section-inner">
+    <h2>Published <span>Work</span></h2>
+    <div class="cards cards-2">
+
+      <div class="card">
+        <div class="card-label">AWS Public Sector Blog &middot; 2026</div>
+        <h3>
+          <a href="https://aws.amazon.com/blogs/publicsector/building-ai-agents-for-domain-specific-classification-at-scale/" target="_blank" rel="noopener">
+            Building AI agents for domain-specific classification at scale
+          </a>
+        </h3>
+        <p>
+          How to build explainable agentic classification systems that map unstructured domain text to
+          standardized codes with confidence scoring, verified citations, and built-in human review routing.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-label">AWS Machine Learning Blog &middot; 2025 &middot; Lead author</div>
+        <h3>
+          <a href="https://aws.amazon.com/blogs/machine-learning/university-of-california-los-angeles-delivers-an-immersive-theater-experience-with-aws-generative-ai-services/" target="_blank" rel="noopener">
+            UCLA delivers an immersive theater experience with AWS generative AI services
+          </a>
+        </h3>
+        <p>
+          How the University of California, Los Angeles used Amazon Bedrock and AWS generative AI services
+          to create a personalized, immersive storytelling experience for the performing arts.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <h2>Open Source <span>Projects</span></h2>
+    <div class="cards cards-2">
+
+      <div class="card">
+        <div class="card-label">aws-samples &middot; 2026</div>
+        <h3>
+          <a href="https://github.com/aws-samples/sample-agentic-ai-powered-complex-data-normalization" target="_blank" rel="noopener">
+            Agentic AI &mdash; Complex Data Normalization
+          </a>
+        </h3>
+        <p>
+          Agentic classification system that maps unstructured domain text to standardized codes with
+          explainability, confidence scoring, verified citations, and built-in human review routing.
+          Built on Strands Agents, Amazon Bedrock, and AgentCore. Accompanies the AWS Public Sector Blog post.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-label">aws-samples &middot; Adopted in production</div>
+        <h3>
+          <a href="https://github.com/aws-samples/AI-Agents-for-Education" target="_blank" rel="noopener">
+            AI Agents for Education
+          </a>
+        </h3>
+        <p>
+          Reusable agentic AI patterns for higher education, adopted in production by multiple universities.
+          Covers knowledge-graph-grounded RAG, correctness-gated validation, and auditable AI pipelines
+          for regulated academic environments.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SPEAKING -->
+<section id="speaking">
+  <div class="section-inner">
+    <h2>Speaking &amp; <span>Workshops</span></h2>
+
+    <div class="speaking-group">
+      <div class="speaking-year">Upcoming</div>
+      <ul class="talk-list">
+        <li class="talk-item">
+          <span class="talk-title">
+            <a href="https://registration.awsevents.com/flow/awsevents/reinvent2026/eventcatalog/page/eventcatalog?search=ind3315" target="_blank" rel="noopener">
+              IND3315: AI Discipline &mdash; UCLA's Data Foundation and Framework for Saying No
+            </a>
+            <span class="upcoming-badge">Upcoming</span>
+          </span>
+          <span class="talk-meta">AWS re:Invent 2026 &middot; Nov 30, Las Vegas</span>
+        </li>
+        <li class="talk-item">
+          <span class="talk-title">
+            <a href="https://carahevents.carahsoft.com/Event/Register/819384-csoft" target="_blank" rel="noopener">
+              AI Governance &amp; Security: Building Trust in the Age of AI
+            </a>
+            <span class="upcoming-badge">Upcoming</span>
+          </span>
+          <span class="talk-meta">Carahsoft / AWS &middot; Nov 4, 2026 &middot; Corona del Mar, CA</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="speaking-group">
+      <div class="speaking-year">2026</div>
+      <ul class="talk-list">
+        <li class="talk-item">
+          <span class="talk-title">
+            <a href="https://ieee-icad.org/icad-workshop-061126/" target="_blank" rel="noopener">
+              Workshop: Hands-On Generative AI with Amazon Bedrock and SageMaker Studio
+            </a>
+          </span>
+          <span class="talk-meta">IEEE ICAD 2026 &middot; Boston College &middot; June 11&ndash;12, 2026</span>
+        </li>
+        <li class="talk-item">
+          <span class="talk-title">
+            <a href="https://aws.amazon.com/events/summits/washington-dc/agenda/" target="_blank" rel="noopener">
+              DVT402 Session
+            </a>
+          </span>
+          <span class="talk-meta">AWS Summit Washington, DC 2026 &middot; June 30&ndash;July 1, 2026</span>
+        </li>
+        <li class="talk-item">
+          <span class="talk-title">
+            <a href="https://aws.amazon.com/events/summits/washington-dc/agenda/" target="_blank" rel="noopener">
+              AIM310: Optimize Your Cloud Investment with Amazon Bedrock
+            </a>
+          </span>
+          <span class="talk-meta">AWS Summit Washington, DC 2026 &middot; Builders&rsquo; Session &middot; July 1, 2026</span>
+        </li>
+        <li class="talk-item">
+          <span class="talk-title">
+            <a href="https://itinsights.nd.edu/events-and-meetings/it-retreat/amplify-and-elevate-2026/agenda/" target="_blank" rel="noopener">
+              Hands-On with Kiro &amp; Using GenAI for Data Preparation
+            </a>
+          </span>
+          <span class="talk-meta">Notre Dame Amplify &amp; Elevate IT Retreat 2026 &middot; May 20, 2026 &middot; Two sessions</span>
+        </li>
+        <li class="talk-item">
+          <span class="talk-title">Harvard IT Summit 2026 &mdash; Speaker</span>
+          <span class="talk-meta">June 10, 2026 &middot; Memorial Hall, Cambridge</span>
+        </li>
+        <li class="talk-item">
+          <span class="talk-title">
+            <a href="https://aws-innovate-state-of-newyork.splashthat.com/" target="_blank" rel="noopener">
+              AWS Innovate: State of New York &mdash; AIML Track
+            </a>
+          </span>
+          <span class="talk-meta">October 2026</span>
+        </li>
+        <li class="talk-item">
+          <span class="talk-title">
+            <a href="https://www.meetup.com/cloud-security-alliance-csa-boston/" target="_blank" rel="noopener">
+              CSA Boston &mdash; AI &amp; Agentic Systems
+            </a>
+          </span>
+          <span class="talk-meta">Cloud Security Alliance Boston Chapter &middot; 2026</span>
+        </li>
+        <li class="talk-item">
+          <span class="talk-title">
+            <a href="https://cs-uri-edu.github.io/cs-connect-day/#/program" target="_blank" rel="noopener">
+              Industry Panel: How AI Is Reshaping Hiring &amp; Tech Workforce
+            </a>
+          </span>
+          <span class="talk-meta">URI CS Connect Day &middot; September 18, 2026 &middot; Kingston, RI</span>
+        </li>
+        <li class="talk-item">
+          <span class="talk-title">
+            <a href="https://carahevents.carahsoft.com/Event/Details/750567-effectual" target="_blank" rel="noopener">
+              AWS Georgia Public Sector Innovation Day &mdash; Speaker
+            </a>
+          </span>
+          <span class="talk-meta">Carahsoft / AWS &middot; May 12, 2026 &middot; College Football Hall of Fame, Atlanta</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="speaking-group">
+      <div class="speaking-year">2025</div>
+      <ul class="talk-list">
+        <li class="talk-item">
+          <span class="talk-title">EDU310: Higher Education AI Session</span>
+          <span class="talk-meta">AWS Summit Washington, DC 2025</span>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- REVIEWING -->
+<section id="reviewing">
+  <div class="section-inner">
+    <h2>Peer <span>Reviewing</span></h2>
+    <div class="cards cards-2">
+
+      <div class="card">
+        <div class="card-label">Scientific Proceedings &middot; 2023&ndash;present</div>
+        <h3>
+          <a href="http://conference.scipy.org.s3-website-us-east-1.amazonaws.com/proceedings/scipy2023/organization.html" target="_blank" rel="noopener">
+            SciPy Conference &mdash; Proceedings Reviewer
+          </a>
+        </h3>
+        <p>
+          Technical reviewer for the annual SciPy conference proceedings, evaluating research papers on
+          scientific computing, machine learning, and data science.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-label">Machine Learning Journal &middot; In progress</div>
+        <h3>
+          <a href="https://jmlr.org/tmlr/faq.html" target="_blank" rel="noopener">
+            TMLR &mdash; Transactions on Machine Learning Research
+          </a>
+        </h3>
+        <p>
+          Volunteering as a reviewer for applied ML and AI systems submissions on OpenReview,
+          covering agentic systems, knowledge-grounded generation, and trustworthy AI.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Aditya Singh &mdash; AI/ML Specialist Solutions Architect, Amazon Web Services</p>
+  <p style="margin-top:8px;">
+    <a href="https://www.linkedin.com/in/adityalyfe/" target="_blank" rel="noopener">LinkedIn</a>
+    &nbsp;&middot;&nbsp;
+    <a href="https://github.com/aditya14896" target="_blank" rel="noopener">GitHub</a>
+    &nbsp;&middot;&nbsp;
+    <a href="https://aws.amazon.com/blogs/machine-learning/author/adilyfe/" target="_blank" rel="noopener">AWS Blog</a>
+  </p>
+</footer>
+
+</body>
+</html>
